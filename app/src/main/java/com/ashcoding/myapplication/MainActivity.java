@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 // todo: Please replace this for testing!!!
                 // Set the Activity name. This is usually packageName + Application name + "Activity"
                 // You can also find this in the generated manifest when an Android app is created.
-                String activityName = packageName + "Titaniumsdk6v8Activity";
+                String activityName = packageName + "." + "Titaniumsdk6v8Activity";
 
                 sendIntent.setClassName(packageName, activityName);
                 sendIntent.addFlags((Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 PackageManager packageManager = getPackageManager();
                 List<ResolveInfo> activities = packageManager.queryIntentActivities(sendIntent, 0);
                 boolean isIntentSafe = activities.size() > 0;
-
                 // Start an activity if it's safe
                 if (isIntentSafe) {
                     startActivity(sendIntent);
